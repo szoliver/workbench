@@ -76,7 +76,10 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\AccountManage.cs" />
     <Compile Include="Helper\ConnectItem.cs" />
+    <Compile Include="Helper\EncryptUtils.cs" />
+    <Compile Include="Interface\IWBForm.cs" />
     <Compile Include="leftMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +110,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -48,9 +48,8 @@
             this.connName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.connName.Location = new System.Drawing.Point(12, 8);
             this.connName.Name = "connName";
-            this.connName.Size = new System.Drawing.Size(63, 14);
+            this.connName.Size = new System.Drawing.Size(0, 14);
             this.connName.TabIndex = 0;
-            this.connName.Text = "连接名称";
             // 
             // label1
             // 
@@ -58,9 +57,8 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.label1.Location = new System.Drawing.Point(35, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.Size = new System.Drawing.Size(0, 12);
             this.label1.TabIndex = 2;
-            this.label1.Text = "root";
             // 
             // label2
             // 
@@ -68,9 +66,8 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
             this.label2.Location = new System.Drawing.Point(34, 47);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 12);
+            this.label2.Size = new System.Drawing.Size(0, 12);
             this.label2.TabIndex = 2;
-            this.label2.Text = "127.0.0.1:9042";
             // 
             // pictureBox3
             // 
@@ -113,6 +110,7 @@
             this.pictureBox4.Size = new System.Drawing.Size(16, 16);
             this.pictureBox4.TabIndex = 4;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // ConnectionItem
             // 

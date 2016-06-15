@@ -7,6 +7,7 @@ namespace workbench.Helper
 {
     public class ConnectItem
     {
+        public string Key { get; set; }
         public string Name { get; set; }
         public string Host { get; set; }
         public int Port { get; set; }
@@ -18,5 +19,13 @@ namespace workbench.Helper
         /// 默认7天后密码失效
         /// </summary>
         public DateTime Addtime { get; set; }
+        public UserRole Userrole { get; set; }
     }
+
+    public enum UserRole
+    {
+        SUPERUSER,
+        NOSUPERUSER
+    }
+
 }

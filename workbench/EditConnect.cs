@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using workbench.Helper;
+using Newtonsoft.Json;
 
 namespace workbench
 {
@@ -21,6 +22,8 @@ namespace workbench
             InitializeComponent();
         }
 
+
+
         private void AddConnect_Resize(object sender, EventArgs e)
         {
 
@@ -32,6 +35,7 @@ namespace workbench
             {
                 Model = new ConnectItem()
                 {
+                    Key = Guid.NewGuid().ToString("N"),
                     Addtime = DateTime.Now,
                     Host = textBox2.Text,
                     KeySpace = comboBox1.Text,
@@ -51,6 +55,7 @@ namespace workbench
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             Model.Host = textBox2.Text;
+            button3.Enabled = false;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -63,16 +68,19 @@ namespace workbench
             int port = 0;
             int.TryParse(textBox3.Text, out port);
             Model.Port = port;
+            button3.Enabled = false;
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
             Model.UserName = textBox4.Text;
+            button3.Enabled = false;
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
             Model.PassWord = textBox5.Text;
+            button3.Enabled = false;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -102,7 +110,6 @@ namespace workbench
         {
             button1.Enabled = false;
             button2.Enabled = false;
-            button3.Enabled = false;
             try
             {
                 var cluster = builder.AddContactPoints(Model.Host.Split(','))
@@ -112,12 +119,12 @@ namespace workbench
                 comboBox1.Items.Clear();
                 foreach (var s in kpist)
                 {
+                    button3.Enabled = true;
                     if (s != "system" && s != "system_auth")
                         comboBox1.Items.Add(s);
                 }
                 if (comboBox1.Items.Count > 0)
                     comboBox1.SelectedIndex = 0;
-                //var session = cluster.Connect("scylladata");
             }
             catch (Exception ex)
             {
@@ -127,8 +134,29 @@ namespace workbench
             {
                 button1.Enabled = true;
                 button2.Enabled = true;
-                button3.Enabled = true;
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AccountManage AM = new AccountManage();
+            textBox1.Text = textBox1.Text.Replace(" ", "");
+            if (textBox1.Text.Length > 0)
+            {
+                if (!Model.SavePassWord)
+                    Model.PassWord = "";
+                AM.AddAccount(Model);
+                frmMain main = (frmMain)this.Owner;
+                main.FlushForm();
+                this.Close();
+            }
+            else
+                MessageBox.Show("请输入连接名称");
         }
 
     }
